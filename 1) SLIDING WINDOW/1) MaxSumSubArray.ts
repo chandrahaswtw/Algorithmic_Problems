@@ -6,10 +6,6 @@
 
 // *****************************************************************
 
-// SOLUTION : The below is done to stop the repetition. say first window is [0,1,2,3] & second window is [1,2,3,4] ==> we are adding all of them again and again. to avoid that, while movint to next window, subtract the first element from previous array and add the last element of new window
-
-// TIME COMPLEXITY : O(N)
-
 const getMaxSubArray = (arr: number[], windowSize : number): any => {
   
   let startIndex = 0;

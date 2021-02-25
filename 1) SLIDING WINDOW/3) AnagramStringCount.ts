@@ -6,20 +6,6 @@
 
 // *****************************************************************
 
-// SOLUTION : 
-// 1) We store all the unique value and their repitions in a map for target. Say, the target is "for", we have the map as below:
-//    {f: 1, o: 1 , r: 1}
-// 2) The initial subcount = 3
-// 3) While loop
-//    -  First window loop:
-//          - We go through all the elements in window and decrease the count in the map for every element and we correspondingly decrease the subcount.
-//    - Further loop
-//          - We see the first departing element. If it's part of sourceMap, then we increase the sourcemap count by 1. And if the value === 1, we increase the count.
-//          - We see current end index. If it's part of sourceMap, then we decrease the sourcemap count by 1. And if the value === 0, we decrease the count.
-
-// Finally we check the count ==> If subCount === 0, then we got a match and we increment the count.At this very point we get all the keys of sourceMap has value 0. 
-
-
 const getAnagramCount = (source: string, target: string) => {
   // INTITAIL SETUP
   let sourceMap: any = {};
