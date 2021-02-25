@@ -15,7 +15,9 @@ const getAnagramCount = (source: string, target: string) => {
     sourceMap[i] = i in sourceMap ? sourceMap[i] + 1 : 1;
   }
 
-  let subCount = Object.keys(sourceMap).length;
+  let subCount : number = Object.values(sourceMap).reduce((acc, cur)=> {
+    return (acc as number) + (cur as number)
+  }, 0) as number;
 
   // SLIDING WINDOW
   let startIndex = 0;
@@ -23,30 +25,30 @@ const getAnagramCount = (source: string, target: string) => {
   let endIndex = startIndex + windowSize - 1;
 
   while (endIndex < source.length) {
+
+    console.log(sourceMap, subCount)
+
     let subSource = source.substring(startIndex, endIndex + 1);
-     console.log(subSource);
+    
     if (startIndex === 0) {
       // FIRST TIME O(N)
       for (let i of subSource) {
         if (i in sourceMap) {
           sourceMap[i]--;
-          sourceMap[i] === 0 ? subCount-- : subCount++;
+          subCount--
         }
       }
+
     } else {
       // FROM SECOND TIME O(1)
       if (source[startIndex - 1] in sourceMap) {
         sourceMap[source[startIndex - 1]]++;
-        if (sourceMap[source[startIndex - 1]] === 1) {
           subCount++;
-        }
       }
 
       if (source[endIndex] in sourceMap) {
         sourceMap[source[endIndex]]--;
-        if (sourceMap[source[endIndex]] === 0) {
           subCount--;
-        }
       }
     }
 
@@ -61,4 +63,4 @@ const getAnagramCount = (source: string, target: string) => {
   return count;
 };
 
-getAnagramCount("forxxorfxxxfro", "for");
+console.log(getAnagramCount("forxxorfxxxrof", "ofr"));
