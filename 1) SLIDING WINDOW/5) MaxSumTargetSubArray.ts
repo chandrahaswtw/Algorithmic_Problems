@@ -22,9 +22,12 @@ const getMaxSumTargetSubArray = (arr: number[], targetSum : number): number[] =>
       }
 
       if(sum >= targetSum){
-          sum -= arr[i];
-          i++;
+          while(sum >= targetSum){
+            sum -= arr[i];
+            i++;
+          }
       }
+
 
       j++;
 
